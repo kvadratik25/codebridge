@@ -30,5 +30,5 @@ export async function restoreCard(id){return patchCard(id,{deleted_at:null});}
 export async function purgeCard(id){const {error}=await supabase.from('cards').delete().eq('id',id);if(error)throw error;}
 export async function loadVersions(cardId){const {data,error}=await supabase.from('card_versions').select('*').eq('card_id',cardId).order('created_at',{ascending:false});if(error)throw error;return data;}
 export async function loadSettings(){const {data,error}=await supabase.from('user_settings').select('theme,card_view,default_language,autosave').maybeSingle();if(error)throw error;return data;}
-export async function saveSettings(settings){const {data:{user}}=await supabase.auth.getUser();const {data,error}=await supabase.from('user_settings').upsert({user_id:user.id,...settings},{onConflict:'user_id'}).select('theme,card_view,default_language,autosave').single();if(error)throw error;return data;}
+export async function saveSettings(settings){const {data:{user}}=await supabase.auth.getUser();const {error}=await supabase.from('user_settings').upsert({user_id:user.id,...settings},{onConflict:'user_id'});if(error)throw error;return settings;}
 export function subscribeToCards(userId,onChange){return supabase.channel(`cards:${userId}`).on('postgres_changes',{event:'*',schema:'public',table:'cards',filter:`user_id=eq.${userId}`},onChange).subscribe();}
