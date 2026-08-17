@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js';
+import { supabase } from './supabase.js?v=5';
 
 export async function loadCards(includeDeleted=false){ let q=supabase.from('cards').select('*').order('updated_at',{ascending:false}); q=includeDeleted?q.not('deleted_at','is',null):q.is('deleted_at',null); const {data,error}=await q; if(error)throw error; return data; }
 export async function createCard(card){
