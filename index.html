@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="CodeBridge — личная облачная библиотека кода">
+  <title>CodeBridge — Личная библиотека кода</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="setup" class="center-screen hidden"><div class="panel"><div class="brand">CB</div><h1>CodeBridge ещё не настроен</h1><p>Укажите Supabase URL и anon key в <code>js/config.js</code>.</p><a class="button primary" href="README.md">Открыть инструкцию</a></div></div>
+
+  <main id="auth" class="auth-shell hidden">
+    <section class="auth-copy"><div class="brand">CB</div><p class="eyebrow">Личная библиотека кода</p><h1>Код всегда<br>под рукой.</h1><p>Сохраняйте на Mac. Копируйте на Windows. Ни одного сломанного символа.</p><div class="code-sample"><span>Sub</span> Hello()<br>&nbsp;&nbsp;MsgBox <em>"Привет!"</em><br><span>End Sub</span></div></section>
+    <form id="login-form" class="auth-card"><h2>С возвращением</h2><p>Войдите в свою библиотеку</p><label>Email<input id="email" type="email" autocomplete="email" required placeholder="name@example.com"></label><label>Пароль<input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="••••••••"></label><button class="button primary wide" type="submit">Войти</button><p id="auth-error" class="form-error" role="alert"></p></form>
+  </main>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="logo-row"><div class="brand small">CB</div><div><strong data-app-name>CodeBridge</strong><small>Личная библиотека</small></div></div>
+      <nav><button class="nav-item active" data-view="library"><span>⌘</span> Библиотека <b id="card-count">0</b></button><button class="nav-item" data-view="favorites"><span>★</span> Избранное</button><button class="nav-item" data-view="trash"><span>♲</span> Корзина</button></nav>
+      <div class="sidebar-bottom"><button class="nav-item" data-action="settings"><span>⚙</span> Настройки</button><div class="user"><span id="user-avatar">—</span><div><strong id="user-email"></strong><small>Supabase Cloud</small></div><button data-action="logout" aria-label="Выйти">↗</button></div></div>
+    </aside>
+    <div class="workspace">
+      <header><button class="mobile-menu" data-action="menu" aria-label="Меню">☰</button><div><p class="eyebrow">Ваше рабочее пространство</p><h1 id="page-title">Моя библиотека</h1></div><div class="header-actions"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Поиск по коду…" aria-label="Поиск"></label><button class="button primary" data-action="new">＋ Новая карточка</button></div></header>
+      <section class="toolbar"><div id="filters" class="filters"><button class="chip active" data-filter="all">Все</button><button class="chip" data-filter="vba">VBA</button><button class="chip" data-filter="excel">Excel</button><button class="chip" data-filter="javascript">JavaScript</button><button class="chip" data-filter="python">Python</button><button class="chip" data-filter="sql">SQL</button><button class="chip" data-filter="other">Другие</button></div><div class="toolbar-right"><select id="sort" aria-label="Сортировка"><option value="updated-desc">Последние изменённые</option><option value="updated-asc">Сначала старые</option><option value="title-asc">Название A–Z</option><option value="title-desc">Название Z–A</option><option value="created-desc">Сначала новые</option></select><button id="view-toggle" class="icon-button" aria-label="Сменить вид">▦</button></div></section>
+      <section id="status" class="status">Загрузка библиотеки…</section>
+      <section id="cards" class="card-grid" aria-live="polite"></section>
+    </div>
+  </div>
+
+  <dialog id="editor-dialog" class="editor-dialog"><form id="editor-form" method="dialog"><div class="dialog-head"><button type="button" class="back" data-action="close-editor">← Библиотека</button><div id="save-state" class="save-state">Новая карточка</div><button type="button" class="icon-button" data-action="close-editor" aria-label="Закрыть">×</button></div><div class="editor-layout"><div class="editor-meta"><input id="card-title" class="title-input" required maxlength="160" placeholder="Название карточки"><div class="meta-row"><label>Тип<select id="card-language"></select></label><label>Теги<input id="card-tags" placeholder="Excel, Работа, KVI"></label></div><label>Описание<textarea id="card-description" rows="3" placeholder="Что делает этот фрагмент?"></textarea></label></div><label class="code-label">Код<textarea id="card-code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Вставьте код без форматирования…"></textarea></label></div><div class="dialog-actions"><button type="button" class="button" data-action="history">История</button><button type="button" class="button" data-action="copy-editor">Копировать</button><button type="submit" class="button primary">Сохранить</button></div></form></dialog>
+  <dialog id="generic-dialog" class="generic-dialog"><div id="generic-content"></div></dialog>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <input id="import-file" type="file" accept="application/json" hidden>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
