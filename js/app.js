@@ -1,8 +1,8 @@
-import { APP_NAME, isConfigured } from './config.js?v=7';
-import { supabase } from './supabase.js?v=7';
-import * as db from './data.js?v=7';
-import { copyPlainText } from './clipboard.js?v=7';
-import { LANGUAGES, escapeHtml, previewCode, relativeDate, debounce, downloadJson } from './utils.js?v=7';
+import { APP_NAME, isConfigured } from './config.js?v=8';
+import { supabase } from './supabase.js?v=8';
+import * as db from './data.js?v=8';
+import { copyPlainText } from './clipboard.js?v=8';
+import { LANGUAGES, escapeHtml, previewCode, relativeDate, debounce, downloadJson } from './utils.js?v=8';
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const state={cards:[],view:'library',filter:'all',query:'',sort:'updated-desc',editing:null,dirty:false,channel:null,userId:null,settings:{theme:'system',card_view:'grid',default_language:'vba',autosave:true}};

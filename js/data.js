@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js?v=7';
+import { supabase } from './supabase.js?v=8';
 
 const NETWORK_TIMEOUT=12000;
 let lastSuccessfulRequest=Date.now();
