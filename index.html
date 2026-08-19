@@ -7,9 +7,9 @@
   <meta name="description" content="CodeBridge — личная облачная библиотека кода">
   <title>CodeBridge — Личная библиотека кода</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <link rel="manifest" href="manifest.json?v=8">
+  <link rel="manifest" href="manifest.json?v=9">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=8">
+  <link rel="stylesheet" href="css/styles.css?v=9">
 </head>
 <body>
   <div id="setup" class="center-screen hidden"><div class="panel"><div class="brand">CB</div><h1>CodeBridge ещё не настроен</h1><p>Укажите Supabase URL и anon key в <code>js/config.js</code>.</p><a class="button primary" href="README.md">Открыть инструкцию</a></div></div>
@@ -27,6 +27,7 @@
     </aside>
     <div class="workspace">
       <header><button class="mobile-menu" data-action="menu" aria-label="Меню">☰</button><div><p class="eyebrow">Ваше рабочее пространство</p><h1 id="page-title">Моя библиотека</h1></div><div class="header-actions"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Поиск по коду…" aria-label="Поиск"></label><button class="button primary" data-action="new">＋ Новая карточка</button></div></header>
+      <section class="project-strip" aria-label="Проекты"><div id="project-tabs" class="project-tabs"></div><button class="button project-add" data-action="new-project">＋ Проект</button></section>
       <section class="toolbar"><div id="filters" class="filters"><button class="chip active" data-filter="all">Все</button><button class="chip" data-filter="vba">VBA</button><button class="chip" data-filter="excel">Excel</button><button class="chip" data-filter="javascript">JavaScript</button><button class="chip" data-filter="python">Python</button><button class="chip" data-filter="sql">SQL</button><button class="chip" data-filter="other">Другие</button></div><div class="toolbar-right"><select id="sort" aria-label="Сортировка"><option value="updated-desc">Последние изменённые</option><option value="updated-asc">Сначала старые</option><option value="title-asc">Название A–Z</option><option value="title-desc">Название Z–A</option><option value="created-desc">Сначала новые</option></select><button id="view-toggle" class="icon-button" aria-label="Сменить вид">▦</button></div></section>
       <section id="status" class="status">Загрузка библиотеки…</section>
       <section id="cards" class="card-grid" aria-live="polite"></section>
@@ -37,6 +38,6 @@
   <dialog id="generic-dialog" class="generic-dialog"><div id="generic-content"></div></dialog>
   <div id="toasts" class="toasts" aria-live="polite"></div>
   <input id="import-file" type="file" accept="application/json" hidden>
-  <script type="module" src="js/app.js?v=8"></script>
+  <script type="module" src="js/app.js?v=9"></script>
 </body>
 </html>
