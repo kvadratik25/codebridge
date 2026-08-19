@@ -1,5 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.111.0';
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=11';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=12';
 
 // Не даём библиотеке аварийно остановить весь сайт, если config.js случайно
 // заменили шаблонным файлом. boot() покажет понятный экран настройки.
