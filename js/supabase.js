@@ -1,5 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.111.0';
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=8';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=9';
 
 const FETCH_TIMEOUT_MS=12000;
 const fetchWithTimeout=(input,init={})=>{

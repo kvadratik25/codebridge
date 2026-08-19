@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js?v=8';
+import { supabase } from './supabase.js?v=9';
 
 const NETWORK_TIMEOUT=12000;
 let lastSuccessfulRequest=Date.now();
@@ -39,7 +39,9 @@ export async function recoverConnection(force=false){
   return recoveryPromise;
 }
 
-export async function loadCards(includeDeleted=false){ let q=supabase.from('cards').select('*').order('updated_at',{ascending:false}); q=includeDeleted?q.not('deleted_at','is',null):q.is('deleted_at',null); const {data,error}=await request(q,'load cards'); if(error)throw error; return data; }
+export async function loadCards(includeDeleted=false,projectId=null){ let q=supabase.from('cards').select('*').order('updated_at',{ascending:false}); q=includeDeleted?q.not('deleted_at','is',null):q.is('deleted_at',null);if(projectId)q=q.eq('project_id',projectId);const {data,error}=await request(q,'load cards'); if(error)throw error; return data; }
+export async function loadProjects(){const {data,error}=await request(supabase.from('projects').select('*').order('created_at',{ascending:true}),'load projects');if(error)throw error;return data;}
+export async function createProject(name){await recoverConnection();const {data:{user}}=await authRequest(supabase.auth.getUser(),'get user');const payload={id:crypto.randomUUID(),user_id:user.id,name};const {error}=await request(supabase.from('projects').insert(payload),'create project');if(error)throw error;return {...payload,created_at:new Date().toISOString()};}
 export async function createCard(card){
   await recoverConnection();
   const {data:{user}}=await authRequest(supabase.auth.getUser(),'get user');
