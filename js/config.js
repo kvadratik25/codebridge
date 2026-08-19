@@ -2,8 +2,8 @@ export const APP_NAME = 'CodeBridge';
 
 // Вставьте сюда URL и anon public key вашего Supabase-проекта.
 // Никогда не используйте service_role key во frontend.
-export const SUPABASE_URL = 'https://ndymqlivolcuuqkcigzy.supabase.co';
-export const SUPABASE_ANON_KEY = 'sb_publishable_qp9exHqZehnOk1NYcRcElQ_jB2AhY7r';
+export const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+export const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 
 export const isConfigured = () =>
   SUPABASE_URL.startsWith('https://') &&
