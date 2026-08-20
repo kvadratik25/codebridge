@@ -39,3 +39,10 @@ dialog{color:var(--ink);background:var(--surface);border:1px solid var(--line);b
 .card-grid.list .card-action-icons .star,.card-grid.list .card-action-icons .icon-button{width:100%}
 @media(max-width:900px){.workspace header{grid-template-columns:auto minmax(0,1fr) auto}.current-datetime{grid-column:3;grid-row:1;min-width:0;text-align:right;place-content:center end}.current-datetime strong{font-size:18px}.current-datetime span{font-size:9px}.header-tools{grid-column:1/-1}.card-grid.list .card-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);padding-top:13px}.card-grid.list .card-actions>.button{grid-column:1/-1}.card-grid.list .modified{display:block}}
 @media(max-width:640px){.current-datetime span{max-width:110px;overflow:hidden;text-overflow:ellipsis}.card-actions{display:grid;grid-template-columns:1fr 1fr}.card-actions>.button{grid-column:1/-1}.card-action-icons{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;margin:0}.card-action-icons .star,.card-action-icons .icon-button{width:100%}}
+
+/* v15: акцент на времени изменения, без языковых меток */
+.code-card .language{display:none!important}
+.modified{display:flex;align-items:baseline;gap:7px;margin:14px 0 4px;color:var(--muted);font-size:11px;line-height:1.2}
+.modified strong{color:var(--ink);font-size:15px;font-weight:750;letter-spacing:-.015em;font-variant-numeric:tabular-nums}
+.card-grid.list .modified{display:flex;margin-top:18px;white-space:nowrap}
+@media(max-width:640px){.modified{margin-top:12px}.modified strong{font-size:14px}}
