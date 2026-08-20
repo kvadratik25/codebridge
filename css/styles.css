@@ -22,3 +22,20 @@ dialog{color:var(--ink);background:var(--surface);border:1px solid var(--line);b
 @media(max-width:900px){.workspace header{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px 12px}.page-heading{align-self:center}.header-tools{grid-column:1/-1;width:100%}.project-picker select{width:100%}.header-actions{margin:0}.header-actions .search{max-width:none}}
 
 @media(max-width:640px){.workspace header{padding-bottom:16px;margin-bottom:18px}.workspace h1{max-width:calc(100vw - 85px)}.header-tools{gap:8px}.project-picker select{height:42px;padding:9px 11px}.project-add{width:42px;height:42px;font-size:19px}.header-actions .button{font-size:inherit;padding-inline:12px}.header-actions .button::after{content:none}.new-card-button{font-size:13px!important;min-height:42px}.generic-dialog{width:calc(100vw - 24px);padding:18px}.generic-dialog h2{font-size:24px;margin-bottom:10px}.settings label{margin:10px 0}.settings select{padding:10px;min-height:43px}.settings-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 0 max(6px,env(safe-area-inset-bottom));bottom:-18px}.settings-actions .button{width:100%;min-width:0;padding:10px 8px;font-size:13px}.settings-actions .mobile-hide{display:none!important}.refresh-app-button{order:1}.settings-actions .primary{order:2}}
+
+/* v14: дата в шапке, точное время карточки и компактные действия */
+.current-datetime{flex:1;min-width:170px;display:grid;place-content:center;text-align:center;align-self:center;color:var(--muted)}
+.current-datetime strong{color:var(--ink);font-size:24px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.current-datetime span{margin-top:7px;font-size:11px;line-height:1.2;text-transform:capitalize;white-space:nowrap}
+.card-info{min-width:0}.modified{margin:12px 0 0;font-size:11px;font-variant-numeric:tabular-nums}
+.card-action-icons{display:flex;gap:7px;margin-left:auto}.card-action-icons .star,.card-action-icons .icon-button{width:42px;height:40px;margin:0;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;background:var(--surface)}
+.card-action-icons .star:hover,.card-action-icons .icon-button:hover{background:var(--surface-2)}
+.card-action-icons .star{font-size:21px}.card-action-icons .icon-button{font-size:15px}
+.card-grid.list .code-card{grid-template-columns:minmax(210px,.75fr) minmax(300px,1.65fr) 142px}
+.card-grid.list .description,.card-grid.list .tags{display:none}.card-grid.list .modified{display:block;margin-top:14px;white-space:nowrap}
+.card-grid.list .card-actions{width:142px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.card-grid.list .card-actions>.button{grid-column:1/-1;width:100%;min-height:40px;padding:8px 10px}
+.card-grid.list .card-action-icons{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:0}
+.card-grid.list .card-action-icons .star,.card-grid.list .card-action-icons .icon-button{width:100%}
+@media(max-width:900px){.workspace header{grid-template-columns:auto minmax(0,1fr) auto}.current-datetime{grid-column:3;grid-row:1;min-width:0;text-align:right;place-content:center end}.current-datetime strong{font-size:18px}.current-datetime span{font-size:9px}.header-tools{grid-column:1/-1}.card-grid.list .card-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);padding-top:13px}.card-grid.list .card-actions>.button{grid-column:1/-1}.card-grid.list .modified{display:block}}
+@media(max-width:640px){.current-datetime span{max-width:110px;overflow:hidden;text-overflow:ellipsis}.card-actions{display:grid;grid-template-columns:1fr 1fr}.card-actions>.button{grid-column:1/-1}.card-action-icons{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;margin:0}.card-action-icons .star,.card-action-icons .icon-button{width:100%}}
