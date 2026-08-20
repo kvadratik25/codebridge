@@ -7,9 +7,9 @@
   <meta name="description" content="CodeBridge — личная облачная библиотека кода">
   <title>CodeBridge — Личная библиотека кода</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <link rel="manifest" href="manifest.json?v=13">
+  <link rel="manifest" href="manifest.json?v=14">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=13">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
   <div id="setup" class="center-screen hidden"><div class="panel"><div class="brand">CB</div><h1>CodeBridge ещё не настроен</h1><p>Укажите Supabase URL и anon key в <code>js/config.js</code>.</p><a class="button primary" href="README.md">Открыть инструкцию</a></div></div>
@@ -26,7 +26,7 @@
       <div class="sidebar-bottom"><button class="nav-item" data-action="settings"><span>⚙</span> Настройки</button><div class="user"><span id="user-avatar">—</span><div><strong id="user-email"></strong><small>Supabase Cloud</small></div><button data-action="logout" aria-label="Выйти">↗</button></div></div>
     </aside>
     <div class="workspace">
-      <header><button class="mobile-menu" data-action="menu" aria-label="Меню">☰</button><div class="page-heading"><p class="eyebrow">Ваше рабочее пространство</p><h1 id="page-title">Моя библиотека</h1></div><div class="header-tools"><div class="project-picker"><select id="project-select" aria-label="Текущий проект"></select><button class="button project-add" data-action="new-project" aria-label="Создать проект" title="Создать проект">＋</button></div><div class="header-actions"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Поиск по коду…" aria-label="Поиск"></label><button class="button primary new-card-button" data-action="new">＋ Новая карточка</button></div></div></header>
+      <header><button class="mobile-menu" data-action="menu" aria-label="Меню">☰</button><div class="page-heading"><p class="eyebrow">Ваше рабочее пространство</p><h1 id="page-title">Моя библиотека</h1></div><div class="current-datetime" aria-live="off"><strong id="current-time">--:--</strong><span id="current-date">Загрузка даты…</span></div><div class="header-tools"><div class="project-picker"><select id="project-select" aria-label="Текущий проект"></select><button class="button project-add" data-action="new-project" aria-label="Создать проект" title="Создать проект">＋</button></div><div class="header-actions"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Поиск по коду…" aria-label="Поиск"></label><button class="button primary new-card-button" data-action="new">＋ Новая карточка</button></div></div></header>
       <section id="status" class="status">Загрузка библиотеки…</section>
       <section id="cards" class="card-grid" aria-live="polite"></section>
     </div>
@@ -36,6 +36,6 @@
   <dialog id="generic-dialog" class="generic-dialog"><div id="generic-content"></div></dialog>
   <div id="toasts" class="toasts" aria-live="polite"></div>
   <input id="import-file" type="file" accept="application/json" hidden>
-  <script type="module" src="js/app.js?v=13"></script>
+  <script type="module" src="js/app.js?v=14"></script>
 </body>
 </html>
