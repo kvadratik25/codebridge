@@ -7,9 +7,9 @@
   <meta name="description" content="CodeBridge — личная облачная библиотека кода">
   <title>CodeBridge — Личная библиотека кода</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <link rel="manifest" href="manifest.json?v=16">
+  <link rel="manifest" href="manifest.json?v=17">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=16">
+  <link rel="stylesheet" href="css/styles.css?v=17">
 </head>
 <body>
   <div id="setup" class="center-screen hidden"><div class="panel"><div class="brand">CB</div><h1>CodeBridge ещё не настроен</h1><p>Укажите Supabase URL и anon key в <code>js/config.js</code>.</p><a class="button primary" href="README.md">Открыть инструкцию</a></div></div>
@@ -33,10 +33,11 @@
     </div>
   </div>
 
-  <dialog id="editor-dialog" class="editor-dialog"><form id="editor-form" method="dialog"><div class="dialog-head"><button type="button" class="back" data-action="close-editor">← Библиотека</button><div id="save-state" class="save-state">Новая карточка</div><button type="button" class="icon-button" data-action="close-editor" aria-label="Закрыть">×</button></div><div class="editor-layout"><div class="editor-meta"><input id="card-title" class="title-input" required maxlength="160" placeholder="Название карточки"><label>Описание<textarea id="card-description" rows="3" placeholder="Что делает этот фрагмент?"></textarea></label></div><label class="code-label">Код<textarea id="card-code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Вставьте код без форматирования…"></textarea></label></div><div class="dialog-actions"><button type="button" class="button" data-action="history">История</button><button type="button" class="button" data-action="copy-editor">Копировать</button><button type="submit" class="button primary">Сохранить</button></div></form></dialog>
+  <dialog id="editor-dialog" class="editor-dialog"><form id="editor-form" method="dialog"><div class="dialog-head"><button type="button" class="back" data-action="close-editor">← Библиотека</button><div id="save-state" class="save-state">Новая карточка</div><button type="button" class="icon-button" data-action="close-editor" aria-label="Закрыть">×</button></div><div class="editor-layout"><div class="editor-meta"><input id="card-title" class="title-input" required maxlength="160" placeholder="Название карточки"><label>Описание<textarea id="card-description" rows="3" placeholder="Что делает этот фрагмент?"></textarea></label><section class="attachments-editor"><div class="attachments-head"><div><strong>Скриншоты</strong><small>Вставьте изображение из буфера ⌘V / Ctrl+V или выберите файл</small></div><button type="button" class="button" data-action="attach-image">＋ Выбрать изображение</button></div><div id="attachment-list" class="attachment-list"></div></section></div><label class="code-label">Код<textarea id="card-code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Вставьте код без форматирования…"></textarea></label></div><div class="dialog-actions"><button type="button" class="button" data-action="history">История</button><button type="button" class="button" data-action="copy-editor">Копировать</button><button type="submit" class="button primary">Сохранить</button></div></form></dialog>
   <dialog id="generic-dialog" class="generic-dialog"><div id="generic-content"></div></dialog>
   <div id="toasts" class="toasts" aria-live="polite"></div>
   <input id="import-file" type="file" accept="application/json" hidden>
-  <script type="module" src="js/app.js?v=16"></script>
+  <input id="image-file" type="file" accept="image/*" multiple hidden>
+  <script type="module" src="js/app.js?v=17"></script>
 </body>
 </html>
