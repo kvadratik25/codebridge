@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js?v=16';
+import { supabase } from './supabase.js?v=17';
 
 const NETWORK_TIMEOUT=12000;
 let lastSuccessfulRequest=Date.now();
@@ -16,6 +16,14 @@ async function authRequest(promise,label){
   try{return await Promise.race([
     promise,
     new Promise((_,reject)=>{timer=setTimeout(()=>reject(Object.assign(new Error(`${label}: timeout`),{code:'TIMEOUT'})),NETWORK_TIMEOUT)})
+  ])}finally{clearTimeout(timer)}
+}
+
+async function storageRequest(promise,label){
+  let timer;
+  try{return await Promise.race([
+    promise,
+    new Promise((_,reject)=>{timer=setTimeout(()=>reject(Object.assign(new Error(`${label}: timeout`),{code:'TIMEOUT'})),35000)})
   ])}finally{clearTimeout(timer)}
 }
 
@@ -75,3 +83,17 @@ export async function loadVersions(cardId){const {data,error}=await request(supa
 export async function loadSettings(){const {data,error}=await request(supabase.from('user_settings').select('theme,card_view,default_language,autosave').maybeSingle(),'load settings');if(error)throw error;return data;}
 export async function saveSettings(settings){await recoverConnection();const {data:{user}}=await authRequest(supabase.auth.getUser(),'get user');const {error}=await request(supabase.from('user_settings').upsert({user_id:user.id,...settings},{onConflict:'user_id'}),'save settings');if(error)throw error;return settings;}
 export function subscribeToCards(userId,onChange){return supabase.channel(`cards:${userId}`).on('postgres_changes',{event:'*',schema:'public',table:'cards',filter:`user_id=eq.${userId}`},onChange).subscribe();}
+
+const IMAGE_BUCKET='card-images';
+export async function uploadCardImage(cardId,file){
+  await recoverConnection();
+  const {data:{user}}=await authRequest(supabase.auth.getUser(),'get user');
+  const extension=(file.name.split('.').pop()||file.type.split('/').pop()||'png').toLowerCase().replace(/[^a-z0-9]/g,'')||'png';
+  const path=`${user.id}/${cardId}/${crypto.randomUUID()}.${extension}`;
+  const {error}=await storageRequest(supabase.storage.from(IMAGE_BUCKET).upload(path,file,{contentType:file.type,cacheControl:'3600',upsert:false}),'upload image');
+  if(error)throw error;
+  return path;
+}
+export async function createImageUrl(path){const {data,error}=await storageRequest(supabase.storage.from(IMAGE_BUCKET).createSignedUrl(path,3600),'open image');if(error)throw error;return data.signedUrl;}
+export async function setCardImages(id,imagePaths){await recoverConnection();const {error}=await request(supabase.from('cards').update({image_paths:imagePaths}).eq('id',id),'save images');if(error)throw error;const {data,error:reloadError}=await request(supabase.from('cards').select('*').eq('id',id).single(),'reload images');if(reloadError)throw reloadError;return data;}
+export async function removeCardImages(paths){if(!paths.length)return;await recoverConnection();const {error}=await storageRequest(supabase.storage.from(IMAGE_BUCKET).remove(paths),'remove images');if(error)throw error;}

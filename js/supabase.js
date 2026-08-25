@@ -1,12 +1,14 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.111.0';
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=16';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=17';
 
 // Не даём библиотеке аварийно остановить весь сайт, если config.js случайно
 // заменили шаблонным файлом. boot() покажет понятный экран настройки.
 const clientUrl=SUPABASE_URL.startsWith('https://')?SUPABASE_URL:'https://placeholder.supabase.co';
 const clientKey=SUPABASE_ANON_KEY.length>40?SUPABASE_ANON_KEY:'placeholder-public-key-for-configuration-screen';
 
-const FETCH_TIMEOUT_MS=12000;
+// Загрузка скриншотов может занимать дольше обычного запроса к таблице.
+// Операции с таблицами по-прежнему ограничены более коротким таймаутом в data.js.
+const FETCH_TIMEOUT_MS=35000;
 const fetchWithTimeout=(input,init={})=>{
   const controller=new AbortController();
   const upstream=init.signal;
