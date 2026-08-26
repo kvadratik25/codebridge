@@ -1,8 +1,8 @@
-import { APP_NAME, isConfigured } from './config.js?v=18';
-import { supabase } from './supabase.js?v=18';
-import * as db from './data.js?v=18';
-import { copyPlainText } from './clipboard.js?v=18';
-import { LANGUAGES, escapeHtml, previewCode, relativeDate, debounce, downloadJson } from './utils.js?v=18';
+import { APP_NAME, isConfigured } from './config.js?v=19';
+import { supabase } from './supabase.js?v=19';
+import * as db from './data.js?v=19';
+import { copyPlainText } from './clipboard.js?v=19';
+import { LANGUAGES, escapeHtml, previewCode, relativeDate, debounce, downloadJson } from './utils.js?v=19';
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const state={cards:[],projects:[],currentProjectId:null,view:'library',query:'',sort:localStorage.getItem('codebridge-sort')||'updated-desc',editing:null,dirty:false,channel:null,userId:null,selectionMode:false,selectedIds:new Set(),pendingImages:[],removedImagePaths:new Set(),attachmentUrls:new Map(),attachmentGeneration:0,previewImage:null,settings:{theme:'system',card_view:'grid',default_language:'vba',autosave:true}};
